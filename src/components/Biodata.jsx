@@ -3,12 +3,11 @@ import SkillsAndInterests from "./SkillsAndInterests";
 import SocialInfos from "./SocialInfos";
 
 const Biodata = ({ person }) => {
-  const { id, name, age, email, phone, skills, interests, socialLinks } =
-    person;
+  
 
   return (
     <div className="BioData">
-      <h2>Biodata of {name}</h2>
+      <h2>Biodata of {person.name}</h2>
       <ul>
         {Object.keys(person).map((key) => {
           if (key === "skills") {
