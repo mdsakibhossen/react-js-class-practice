@@ -1,13 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Biodata from "./components/Biodata"
+import {persons} from "./data/data"
+// import './App.css'
 
 function App() {
 
   return (
-    <h1>Hello World!</h1>
-  )
+    <div className="App">
+      {persons.map((person) => (
+        <>
+          <Biodata key={person.id} person={person} /><hr />
+        </>
+      ))}
+    </div>
+  );
 }
 
 export default App
