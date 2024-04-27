@@ -17,9 +17,30 @@ const NoteItem = (props) => {
     const newNoteList = noteList.filter((note) => note.id !== noteId);
     setNoteList(newNoteList);
   };
+  const completionHandler = (isChecked, checkedNote) => {
+    const newNoteList = noteList.map((note) => {
+      if (note.id === checkedNote.id) {
+        return {
+          ...note,
+          isCompleted: isChecked,
+        };
+      }
+      return note;
+    });
+    setNoteList(newNoteList);
+  };
+
   return (
     <span>
-      <span>{note.title}</span>
+      <input
+        type="checkbox"
+        onChange={(e) => completionHandler(e.target.checked, note)}
+      />
+      <span
+        style={{ textDecoration: note.isCompleted ? " line-through" : "none" }}
+      >
+        {note.title}
+      </span>
       <button onClick={() => editHandler(note)}>Edit</button>
       <button onClick={() => deleteHandler(note.id)}>Delete</button>
     </span>

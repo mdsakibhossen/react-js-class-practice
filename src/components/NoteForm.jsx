@@ -22,6 +22,7 @@ const NoteForm = (props) => {
     const newNote = {
       id: Date.now() + "",
       title: noteTitle,
+      isCompleted: false,
     };
     setNoteList([...noteList, newNote]);
     setNoteTitle("");
