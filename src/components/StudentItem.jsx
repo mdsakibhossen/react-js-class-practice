@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StudentContext } from "../contexts/Student";
 
 const StudentItem = (props) => {
   const {
-    student,
     students,
     setStudents,
     setEditableStudent,
     setEditMode,
     setStudentName,
-    title,
-  } = props;
+  } = useContext(StudentContext);
 
   const deleteHandler = (id) => {
     setStudents(students.filter((student) => student.id !== id));
@@ -78,21 +77,25 @@ const StudentItem = (props) => {
 
   return (
     <div>
-      <span>{student.name}</span>
-      {title === "All Students" ? (
+      <span>{props.student.name}</span>
+      {props.title === "All Students" ? (
         <>
-          <button onClick={() => editHandler(student)}>Edit</button>
-          <button onClick={() => deleteHandler(student.id)}>Delete</button>
-          <button onClick={() => makePresentHandler(student)}>
+          <button onClick={() => editHandler(props.student)}>Edit</button>
+          <button onClick={() => deleteHandler(props.student.id)}>
+            Delete
+          </button>
+          <button onClick={() => makePresentHandler(props.student)}>
             Make Present
           </button>
-          <button onClick={() => makeAbsentHandler(student)}>
+          <button onClick={() => makeAbsentHandler(props.student)}>
             Make Absent
           </button>
         </>
       ) : (
-        <button onClick={() => swapStudentHandler(student)}>
-          {student.isPresent ? "Send to Absent List" : "Send to Present List"}
+        <button onClick={() => swapStudentHandler(props.student)}>
+          {props.student.isPresent
+            ? "Send to Absent List"
+            : "Send to Present List"}
         </button>
       )}
     </div>

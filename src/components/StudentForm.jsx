@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StudentContext } from "../contexts/Student";
 
-const StudentForm = (props) => {
+const StudentForm = () => {
   const {
     studentName,
     editMode,
@@ -10,7 +11,7 @@ const StudentForm = (props) => {
     setEditMode,
     setEditableStudent,
     editableStudent,
-  } = props;
+  } = useContext(StudentContext);
 
   const addStudentHandler = () => {
     const newStudent = {

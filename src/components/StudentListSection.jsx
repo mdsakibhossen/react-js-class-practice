@@ -1,40 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import StudentList from "./StudentList";
+import { StudentContext } from "../contexts/Student";
 
-const StudentListSection = (props) => {
-  const {
-    students,
-    setStudents,
-    setEditableStudent,
-    setEditMode,
-    setStudentName,
-  } = props;
+const StudentListSection = () => {
+  const { students } = useContext(StudentContext);
   const presentStudents = students.filter(
     (student) => student.isPresent === true
   );
   const absentStudents = students.filter(
     (student) => student.isPresent === false
   );
+
   return (
     <div style={{ display: "flex", justifyContent: "space-around" }}>
-      <StudentList
-        title="All Students"
-        students={students}
-        setStudents={setStudents}
-        setEditableStudent={setEditableStudent}
-        setEditMode={setEditMode}
-        setStudentName={setStudentName}
-      />
-      <StudentList
-        title="Present Students"
-        students={presentStudents}
-        setStudents={setStudents}
-      />
-      <StudentList
-        title="Absent Students"
-        students={absentStudents}
-        setStudents={setStudents}
-      />
+      <StudentList title="All Students" students={students} />
+      <StudentList title="Present Students" students={presentStudents} />
+      <StudentList title="Absent Students" students={absentStudents} />
     </div>
   );
 };
