@@ -2,49 +2,41 @@ import React, { useContext } from "react";
 import { StudentContext } from "../contexts/Student";
 
 const StudentForm = () => {
-  const {
-    studentName,
-    editMode,
-    setStudents,
-    students,
-    setStudentName,
-    setEditMode,
-    setEditableStudent,
-    editableStudent,
-  } = useContext(StudentContext);
+  const { studentName, editMode, setStudentName, submitHandler } =
+    useContext(StudentContext);
 
-  const addStudentHandler = () => {
-    const newStudent = {
-      id: Date.now() + "",
-      name: studentName,
-      isPresent: undefined,
-    };
-    setStudents([...students, newStudent]);
-    setStudentName("");
-  };
-  const updateHandler = () => {
-    const updatedStudentList = students.map((item) => {
-      if (item.id === editableStudent.id) {
-        return {
-          ...item,
-          name: studentName,
-        };
-      }
-      return item;
-    });
-    setStudents(updatedStudentList);
-    setStudentName("");
-    setEditMode(false);
-    setEditableStudent(null);
-  };
-  const submitHandler = (e) => {
-    e.preventDefault();
+  //   const addStudentHandler = () => {
+  //     const newStudent = {
+  //       id: Date.now() + "",
+  //       name: studentName,
+  //       isPresent: undefined,
+  //     };
+  //     setStudents([...students, newStudent]);
+  //     setStudentName("");
+  //   };
+  //   const updateHandler = () => {
+  //     const updatedStudentList = students.map((item) => {
+  //       if (item.id === editableStudent.id) {
+  //         return {
+  //           ...item,
+  //           name: studentName,
+  //         };
+  //       }
+  //       return item;
+  //     });
+  //     setStudents(updatedStudentList);
+  //     setStudentName("");
+  //     setEditMode(false);
+  //     setEditableStudent(null);
+  //   };
+  //   const submitHandler = (e) => {
+  //     e.preventDefault();
 
-    if (!studentName) {
-      return alert("Please Enter Student Name");
-    }
-    editMode ? updateHandler(editableStudent) : addStudentHandler();
-  };
+  //     if (!studentName) {
+  //       return alert("Please Enter Student Name");
+  //     }
+  //     editMode ? updateHandler(editableStudent) : addStudentHandler();
+  //   };
 
   return (
     <div

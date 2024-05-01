@@ -3,77 +3,77 @@ import { StudentContext } from "../contexts/Student";
 
 const StudentItem = (props) => {
   const {
-    students,
-    setStudents,
-    setEditableStudent,
-    setEditMode,
-    setStudentName,
+    deleteHandler,
+    editHandler,
+    makePresentHandler,
+    makeAbsentHandler,
+    swapStudentHandler,
   } = useContext(StudentContext);
 
-  const deleteHandler = (id) => {
-    setStudents(students.filter((student) => student.id !== id));
-  };
+  //   const deleteHandler = (id) => {
+  //     setStudents(students.filter((student) => student.id !== id));
+  //   };
 
-  const editHandler = (student) => {
-    setEditMode(true);
-    setEditableStudent(student);
-    setStudentName(student.name);
-  };
+  //   const editHandler = (student) => {
+  //     setEditMode(true);
+  //     setEditableStudent(student);
+  //     setStudentName(student.name);
+  //   };
 
-  const makePresentHandler = (student) => {
-    if (student.isPresent !== undefined) {
-      return alert(
-        `${student.name} is already in ${
-          student.isPresent === true ? "Present List" : "Absent List"
-        }`
-      );
-    }
-    const updatedStudentList = students.map((item) => {
-      if (item.id === student.id) {
-        return {
-          ...item,
-          isPresent: true,
-        };
-      }
-      return item;
-    });
-    setStudents(updatedStudentList);
-  };
+  //   const makePresentHandler = (student) => {
+  //     if (student.isPresent !== undefined) {
+  //       return alert(
+  //         `${student.name} is already in ${
+  //           student.isPresent === true ? "Present List" : "Absent List"
+  //         }`
+  //       );
+  //     }
+  //     const updatedStudentList = students.map((item) => {
+  //       if (item.id === student.id) {
+  //         return {
+  //           ...item,
+  //           isPresent: true,
+  //         };
+  //       }
+  //       return item;
+  //     });
+  //     setStudents(updatedStudentList);
+  //   };
 
-  const makeAbsentHandler = (student) => {
-    if (student.isPresent !== undefined) {
-      return alert(
-        `${student.name} is already in ${
-          student.isPresent === true ? "Present List" : "Absent List"
-        }`
-      );
-    }
+  //   const makeAbsentHandler = (student) => {
+  //     if (student.isPresent !== undefined) {
+  //       return alert(
+  //         `${student.name} is already in ${
+  //           student.isPresent === true ? "Present List" : "Absent List"
+  //         }`
+  //       );
+  //     }
 
-    const updatedStudentList = students.map((item) => {
-      if (item.id === student.id) {
-        return {
-          ...item,
-          isPresent: false,
-        };
-      }
-      return item;
-    });
+  //     const updatedStudentList = students.map((item) => {
+  //       if (item.id === student.id) {
+  //         return {
+  //           ...item,
+  //           isPresent: false,
+  //         };
+  //       }
+  //       return item;
+  //     });
 
-    setStudents(updatedStudentList);
-  };
+  //     setStudents(updatedStudentList);
+  //   };
 
-  const swapStudentHandler = (student) => {
-    const updatedStudentList = students.map((item) => {
-      if (item.id === student.id) {
-        return {
-          ...item,
-          isPresent: !item.isPresent,
-        };
-      }
-      return item;
-    });
-    setStudents(updatedStudentList);
-  };
+  //   const swapStudentHandler = (student) => {
+  //     const updatedStudentList = students.map((item) => {
+  //       if (item.id === student.id) {
+  //         return {
+  //           ...item,
+  //           isPresent: !item.isPresent,
+  //         };
+  //       }
+  //       return item;
+  //     });
+  //     setStudents(updatedStudentList);
+  //   };
 
   return (
     <div>
