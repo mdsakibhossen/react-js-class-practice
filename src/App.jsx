@@ -1,31 +1,30 @@
-import React, { useState } from "react";
-import NoteForm from "./components/NoteForm";
-import NoteListSection from "./components/NoteListSection";
+import { useState } from "react";
+import StudentForm from "./components/StudentForm";
+import StudentListSection from "./components/StudentListSection";
 
 function App() {
-  const [noteTitle, setNoteTitle] = useState("");
-  const [noteList, setNoteList] = useState([]);
+  const [studentName, setStudentName] = useState("");
+  const [students, setStudents] = useState([]);
   const [editMode, setEditMode] = useState(false);
-  const [editAbleNote, setEditAbleNote] = useState(null);
-
+  const [editableStudent, setEditableStudent] = useState([]);
   return (
     <div className="App">
-      <NoteForm
-        noteList={noteList}
-        setNoteList={setNoteList}
+      <StudentForm
+        studentName={studentName}
         editMode={editMode}
+        editableStudent={editableStudent}
+        setStudents={setStudents}
+        students={students}
+        setStudentName={setStudentName}
         setEditMode={setEditMode}
-        noteTitle={noteTitle}
-        setNoteTitle={setNoteTitle}
-        editAbleNote={editAbleNote}
-        setEditAbleNote={setEditAbleNote}
+        setEditableStudent={setEditableStudent}
       />
-      <NoteListSection
-        noteList={noteList}
-        setNoteList={setNoteList}
+      <StudentListSection
+        students={students}
+        setStudents={setStudents}
+        setEditableStudent={setEditableStudent}
         setEditMode={setEditMode}
-        setNoteTitle={setNoteTitle}
-        setEditAbleNote={setEditAbleNote}
+        setStudentName={setStudentName}
       />
     </div>
   );
