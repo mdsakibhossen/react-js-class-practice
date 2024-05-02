@@ -5,9 +5,9 @@ import "./index.css";
 import StudentProvider from "./contexts/Student.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <StudentProvider>
+  <StudentProvider>
+    <React.StrictMode>
       <App />
-    </StudentProvider>
-  </React.StrictMode>
+    </React.StrictMode>
+  </StudentProvider>
 );

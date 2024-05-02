@@ -1,6 +1,8 @@
+
 import StudentItem from "./StudentItem";
 
 const StudentList = (props) => {
+  
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>{props.title}</h2>

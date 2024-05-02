@@ -2,32 +2,71 @@ import React, { useContext } from "react";
 import { StudentContext } from "../contexts/Student";
 
 const StudentItem = (props) => {
-  const {
-    deleteHandler,
-    editHandler,
-    makePresentHandler,
-    makeAbsentHandler,
-    swapStudentHandler,
-  } = useContext(StudentContext);
+  const { dispatch } = useContext(StudentContext);
 
   return (
     <div>
       <span>{props.student.name}</span>
       {props.title === "All Students" ? (
         <>
-          <button onClick={() => editHandler(props.student)}>Edit</button>
-          <button onClick={() => deleteHandler(props.student.id)}>
+          <button
+            onClick={() =>
+              dispatch({ type: "EDIT_STUDENT", payload: props.student })
+            }
+          >
+            Edit
+          </button>
+          <button
+            onClick={() =>
+              dispatch({ type: "DELETE_STUDENT", payload: props.student.id })
+            }
+          >
             Delete
           </button>
-          <button onClick={() => makePresentHandler(props.student)}>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "UPDATE_STUDENT",
+                payload: {
+                  student: props.student,
+                  propertyName: "isPresent",
+                  propertyValue: true,
+                  isAllListBtnClicked: true,
+                },
+              })
+            }
+          >
             Make Present
           </button>
-          <button onClick={() => makeAbsentHandler(props.student)}>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "UPDATE_STUDENT",
+                payload: {
+                  student: props.student,
+                  propertyName: "isPresent",
+                  propertyValue: false,
+                  isAllListBtnClicked: true,
+                },
+              })
+            }
+          >
             Make Absent
           </button>
         </>
       ) : (
-        <button onClick={() => swapStudentHandler(props.student)}>
+        <button
+          onClick={() =>
+            dispatch({
+              type: "UPDATE_STUDENT",
+              payload: {
+                student: props.student,
+                propertyName: "isPresent",
+                propertyValue: !props.student.isPresent,
+              },
+            })
+          }
+        >
           {props.student.isPresent
             ? "Send to Absent List"
             : "Send to Present List"}
