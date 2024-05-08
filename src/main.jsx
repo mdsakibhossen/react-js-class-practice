@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import StudentProvider from "./contexts/Student.jsx";
+import NoteProvider from "./contexts/Note.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <StudentProvider>
+  <NoteProvider>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </StudentProvider>
+  </NoteProvider>
 );
