@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 export const NoteContext = createContext();
 
@@ -9,9 +9,19 @@ const NoteProvider = ({ children }) => {
   const [editableNote, setEditableNote] = useState(null);
   const [searchValue, setSearchValue] = useState("");
 
+  const getNotes = () => {
+    fetch("http://localhost:3000/notes")
+      .then((res) => res.json())
+      .then((data) => setNotes(data));
+  };
+
+  useEffect(() => {
+    getNotes();
+  }, []);
+
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!noteTitle) {
+    if (!noteTitle.trim()) {
       return alert("Please Enter Note Title");
     }
     editMode ? updateNote() : addNote();
@@ -23,7 +33,13 @@ const NoteProvider = ({ children }) => {
       title: noteTitle,
       isCompleted: false,
     };
-    setNotes([...notes, newNote]);
+
+    fetch("http://localhost:3000/notes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newNote),
+    }).then(() => getNotes());
+
     setNoteTitle("");
   };
   const editNote = (note) => {
@@ -32,35 +48,39 @@ const NoteProvider = ({ children }) => {
     setNoteTitle(note.title);
   };
   const updateNote = () => {
-    const updatedNotes = notes.map((note) => {
-      if (note.id === editableNote.id) {
-        return {
-          ...note,
-          title: noteTitle,
-        };
-      }
-      return note;
-    });
-    setNotes(updatedNotes);
+    const { id } = editableNote;
+    const updatedNote = {
+      ...editableNote,
+      title: noteTitle,
+    };
+
+    fetch(`http://localhost:3000/notes/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedNote),
+    }).then(() => getNotes());
+
     setEditMode(false);
     setEditableNote(null);
     setNoteTitle("");
   };
   const deleteNote = (noteId) => {
-    const newNotes = notes.filter((note) => note.id !== noteId);
-    setNotes(newNotes);
+    fetch(`http://localhost:3000/notes/${noteId}`, {
+      method: "DELETE",
+    }).then(() => getNotes());
   };
   const changeStatus = (note) => {
-    const updatedNotes = notes.map((item) => {
-      if (item.id === note.id) {
-        return {
-          ...item,
-          isCompleted: !item.isCompleted,
-        };
-      }
-      return item;
-    });
-    setNotes(updatedNotes);
+    const { id } = note;
+    const updatedNote = {
+      ...note,
+      isCompleted: !note.isCompleted,
+    };
+
+    fetch(`http://localhost:3000/notes/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedNote),
+    }).then(() => getNotes());
   };
 
   const ctxValue = {

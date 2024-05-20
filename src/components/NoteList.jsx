@@ -9,7 +9,9 @@ const NoteList = () => {
       <h3>Note List</h3>
       <ul>
         {notes
-          .filter((note) => note.title.includes(searchValue))
+          .filter((note) =>
+            note.title.toLowerCase().includes(searchValue.toLowerCase())
+          )
           .map((note) => (
             <li key={note.id}>
               <NoteItem note={note} />
