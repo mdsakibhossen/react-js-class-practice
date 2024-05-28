@@ -40,5 +40,73 @@
       "title": "Note 7",
       "isCompleted": false
     }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "title": "Car 1",
+      "description": "Blue Bmw Sedan Near Green Lawn Grass Blue Bmw Sedan Near Green Lawn Grass Blue Bmw Sedan Near Green Lawn Grass Blue Bmw Sedan Near Green Lawn Grass Blue Bmw Sedan Near Green Lawn Grass",
+      "price": 9989,
+      "discount": "20%",
+      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+      "id": "2",
+      "title": "Car 2",
+      "description": "Best Car",
+      "price": 7798,
+      "discount": "30%",
+      "image": "https://images.pexels.com/photos/9846101/pexels-photo-9846101.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+      "id": "3",
+      "title": "Car 3",
+      "description": "White BMW Parked outside a Building",
+      "price": 5490,
+      "discount": "50%",
+      "image": "https://images.pexels.com/photos/7994907/pexels-photo-7994907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+      "id": "4",
+      "title": "Car 4",
+      "description": "Orange Dodge Sedan on Pavement",
+      "price": 3496,
+      "discount": "0%",
+      "image": "https://images.pexels.com/photos/381292/pexels-photo-381292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+      "id": "1716913297458",
+      "title": "Car 5",
+      "price": 2000,
+      "discount": "50%",
+      "image": [
+        "https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
+      "description": "Gray Mercedez Benz Amg\n"
+    },
+    {
+      "id": "1716913461010",
+      "title": "Car 6",
+      "price": 1000,
+      "discount": "20%",
+      "image": "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "White Land Rover Range Rover Suv on Road\n"
+    },
+    {
+      "id": "1716923943971",
+      "title": "Car 7",
+      "price": 1200,
+      "discount": "15%",
+      "image": "https://images.pexels.com/photos/241316/pexels-photo-241316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Silver Mercedes-benz Amg Gt Coupe Parked Beside Green Leaf Tree\n\n"
+    },
+    {
+      "id": "1716924113034",
+      "title": "Car 8",
+      "price": 5000,
+      "discount": "50%",
+      "image": "https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Shallow Focus Photography of Blue Alpine Car\n"
+    }
   ]
 }

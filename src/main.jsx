@@ -1,13 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
-import NoteProvider from "./contexts/Note.jsx";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/Router.jsx";
+import CartProvider from "./contexts/Cart.jsx";
+import ProductProvider from "./contexts/Product.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <NoteProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </NoteProvider>
+  <ProductProvider>
+    <CartProvider>
+      <React.StrictMode>
+        <RouterProvider router={router} />
+      </React.StrictMode>
+    </CartProvider>
+  </ProductProvider>
 );
