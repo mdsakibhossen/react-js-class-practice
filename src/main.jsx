@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import NoteProvider from "./contexts/Note.jsx";
+import { Provider } from "react-redux";
+import { store } from "./store/index.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <NoteProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </NoteProvider>
+  <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+  </Provider>
 );

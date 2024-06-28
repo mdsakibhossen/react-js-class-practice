@@ -1,14 +1,15 @@
-import React, { useContext } from "react";
-import { NoteContext } from "../contexts/Note";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchValue } from "../store/features/note/noteSlice";
 
 const SearchForm = () => {
-  const { searchValue, setSearchValue } = useContext(NoteContext);
+  const { searchValue } = useSelector((storeStates) => storeStates.note);
+  const dispatch = useDispatch();
   return (
     <div>
       <br />
       <input
         type="search"
-        onChange={(e) => setSearchValue(e.target.value)}
+        onChange={(e) => dispatch(setSearchValue(e.target.value))}
         value={searchValue}
         placeholder="Search Note"
       />
