@@ -5,11 +5,12 @@ import { useSelector } from "react-redux";
 const NoteList = () => {
   const { searchValue } = useSelector((storeStates) => storeStates.note);
   const { data: notes, isError, isFetching, error } = useGetNotesQuery();
-  // console.log(error?.error);
-  // console.log(notes?.filter((note) => note.title.toLowerCase().includes(searchValue.toLowerCase())));
+  
   // Derived States
-  const searchedNotes = notes?.filter((note) =>
-    note.title.toLowerCase().includes(searchValue.toLowerCase())
+  const searchedNotes = notes?.filter(
+    (note) =>
+      note.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+      note.description.toLowerCase().includes(searchValue.toLowerCase())
   );
 
   return (

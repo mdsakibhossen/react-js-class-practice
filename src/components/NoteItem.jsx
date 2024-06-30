@@ -42,7 +42,7 @@ const NoteItem = ({ note }) => {
         <button onClick={() => dispatch(setEditMode(note))}>Edit</button>
       </td>
       <td>
-        <button onClick={() => deleteNote(note.id)}>Delete</button>
+        <button onClick={async() => await deleteNote(note.id)}>Delete</button>
       </td>
     </tr>
   );
